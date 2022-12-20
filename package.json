@@ -1,0 +1,38 @@
+{
+	"name": "graphql",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"description": "Learning GraphQL with Node",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"lint": "npx eslint src test",
+		"lint:fix": "npm run lint -- --fix",
+		"prettier": "npx prettier src test --check",
+		"prettier:fix": "npm run prettier -- --write",
+		"format": "npm run prettier:fix && npm run lint:fix"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/amiteshrai/node-graphql.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/amiteshrai/node-graphql/issues"
+	},
+	"homepage": "https://github.com/amiteshrai/node-graphql#readme",
+	"devDependencies": {
+		"eslint": "^8.29.0",
+		"eslint-config-airbnb-base": "^15.0.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-import": "^2.26.0",
+		"prettier": "^2.8.1"
+	},
+	"dependencies": {
+		"apollo-server": "^3.11.1",
+		"express": "^4.18.2",
+		"graphql": "^16.6.0"
+	}
+}
