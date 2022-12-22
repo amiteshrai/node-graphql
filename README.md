@@ -1,2 +1,1 @@
-# node-graphql
-Learning GraphQL with Node
+# Learning GraphQL with Node
