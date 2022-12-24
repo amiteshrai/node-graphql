@@ -2,10 +2,10 @@ import cors from "cors";
 import express from "express";
 import { expressjwt } from "express-jwt";
 import jwt from "jsonwebtoken";
-import { User } from "./db.js";
 import { ApolloServer } from "apollo-server-express";
 import { readFile } from "fs/promises";
-import { resolvers } from "./resolvers.js";
+import { User } from "./db.js";
+import resolvers from "./resolvers.js";
 
 const PORT = 9000;
 const JWT_SECRET = Buffer.from("Zn8Q5tyZ/G1MHltc4F/gTkVJMlrbKiZt", "base64");
@@ -23,7 +23,7 @@ app.use(
 
 app.post("/login", async (req, res) => {
 	const { email, password } = req.body;
-	const user = await User.findOne((user) => user.email === email);
+	const user = await User.findOne((u) => u.email === email);
 	if (user && user.password === password) {
 		const token = jwt.sign({ sub: user.id }, JWT_SECRET);
 		res.json({ token });
@@ -40,6 +40,6 @@ apolloServer.applyMiddleware({ app, path: "/graphql" });
 app.listen({ port: PORT }, () => {
 	console.log(`🚀 Express server ready at http://localhost:${PORT}`);
 	console.log(
-		`🚀 Apollo server ready at http://localhost:${PORT}/${apolloServer.graphqlPath}`
+		`🚀 Apollo server ready at http://localhost:${PORT}${apolloServer.graphqlPath}`
 	);
 });

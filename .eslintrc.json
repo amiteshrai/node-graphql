@@ -17,6 +17,19 @@
 		"func-names": "off",
 		"no-plusplus": "off",
 		"no-process-exit": "off",
-		"class-methods-use-this": "off"
+		"class-methods-use-this": "off",
+		"import/extensions": [
+			"error",
+			{
+				"js": "ignorePackages"
+			}
+		]
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"extensions": [".js", ".jsx", ".ts", ".tsx"]
+			}
+		}
 	}
 }
