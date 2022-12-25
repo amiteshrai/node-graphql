@@ -6,6 +6,12 @@ const resolvers = {
 		jobs: () => Job.findAll(),
 		company: (root, args) => Company.findById(args.id),
 	},
+	Mutation: {
+		createJob: (_root, { input }) => Job.create(input),
+		deleteJob: (_root, { id }) => Job.delete(id),
+		updateJob: (_root, { input }) => Job.update(input),
+	},
+
 	Job: {
 		company: (job) => Company.findById(job.companyId),
 	},
