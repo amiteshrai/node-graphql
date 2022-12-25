@@ -4,6 +4,7 @@ import { createJob } from "../services/queries";
 
 function JobForm() {
 	const navigate = useNavigate();
+	const [error, setError] = useState(false);
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
 
@@ -13,14 +14,17 @@ function JobForm() {
 		const job = await createJob({
 			title,
 			description,
-			companyId: "pVbRRBQtMVw6lUAkj1k43",
 		});
+		if (!job) {
+			setError(true);
+		}
 		navigate(`/jobs/${job.id}`);
 	};
 
 	return (
 		<div>
 			<h1 className="title">New Job</h1>
+			{error && <h2>Something went wrong</h2>}
 			<div className="box">
 				<form>
 					<div className="field">
